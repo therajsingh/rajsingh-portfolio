@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Portfolio</title>
+    <title>Raj Singh | Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -11,6 +12,7 @@
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
+
         body {
             background: #F5F5DC;
             color: #333;
@@ -18,11 +20,13 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         .container {
             width: 80%;
             margin: auto;
             text-align: center;
         }
+
         header {
             /* background: #222; */
             background: #111111;
@@ -30,33 +34,50 @@
             padding: 15px 0;
             animation: slideDown 1s ease-in-out;
         }
+
         @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
         }
+
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
         }
+
         nav ul li {
             margin: 0 15px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 18px;
         }
+
         .hero {
             background: #ffd043;
             color: F5F5DC;
             padding: 50px 20px;
             animation: fadeIn 1.5s ease-in-out;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         .hero img {
             width: 150px;
             height: 150px;
@@ -65,11 +86,19 @@
             animation: scaleUp 1s ease-in-out;
             /* border: 5px solid #ffffff; */
         }
+
         @keyframes scaleUp {
-            from { transform: scale(0); }
-            to { transform: scale(1); }
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
         }
-        .social-media, .contact {
+
+        .social-media,
+        .contact {
             margin: 50px 0;
             display: flex;
             flex-direction: column;
@@ -79,15 +108,25 @@
             width: 100%;
             animation: fadeInUp 1.5s ease-in-out;
         }
+
         @keyframes fadeInUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
+
         .social-media div {
             display: flex;
             gap: 15px;
             justify-content: center;
         }
+
         .social-media a {
             display: inline-block;
             margin: 10px;
@@ -98,10 +137,12 @@
             border-radius: 5px;
             transition: 0.3s;
         }
+
         .social-media a:hover {
             background: #555;
             transform: scale(1.1);
         }
+
         footer {
             /* background: #222; */
             background: #111111;
@@ -111,12 +152,30 @@
             margin-top: auto;
             animation: slideUp 1s ease-in-out;
         }
+
         @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        #typing-text::after {
+            content: "|";
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -128,9 +187,10 @@
         </nav>
     </header>
     <section class="hero" id="home">
-        <img src="https://github.com/therajsingh/rajsingh-portfolio/blob/main/p2.jpg?raw=true" alt="Your Profile Picture">
+        <img src="p2.jpg" alt="Your Profile Picture">
         <h1>Raj Singh</h1>
-        <p>DSA Enthusiast | 🚀 Aspiring Software Developer</p>
+        <p><span id="typing-text"></span></p>
+        <!-- <p>DSA Enthusiast | 🚀 Aspiring Software Developer</p> -->
     </section>
     <section class="social-media container" id="social-media">
         <h2>Connect with Me</h2>
@@ -144,10 +204,51 @@
         <h2>Contact Me</h2>
         <p>Email: <a href="mailto:rajsingh.bhumca24@gmail.com">rajsingh.bhumca24@gmail.com</a>
         </p>
-        
+
     </section>
     <footer>
         <p>&copy; 2025 Raj Singh. All Rights Reserved.</p>
     </footer>
+    <script>
+        const phrases = [
+            "A DSA Enthusiast.",
+            "A Problem Solver.",
+            // "a Tech Learner.",
+            "🚀 Aspiring Software Engineer."
+        ];
+
+        let phraseIndex = 0;
+        let isDeleting = false;
+        let index = 0;
+
+        function typeEffect() {
+            const typingText = document.getElementById("typing-text");
+            const currentPhrase = phrases[phraseIndex];
+
+            if (!isDeleting) {
+                typingText.innerHTML = currentPhrase.substring(0, index + 1);
+                index++;
+                if (index === currentPhrase.length) {
+                    setTimeout(() => { isDeleting = true; typeEffect(); }, 1500); // Pause before erasing
+                    return;
+                }
+            } else {
+                typingText.innerHTML = currentPhrase.substring(0, index - 1);
+                index--;
+                if (index === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length; // Move to next phrase
+                }
+            }
+
+            setTimeout(typeEffect, isDeleting ? 50 : 100); // Adjust typing/erasing speed
+        }
+
+        window.onload = function () {
+            typeEffect();
+        };
+    </script>
+
 </body>
+
 </html>
