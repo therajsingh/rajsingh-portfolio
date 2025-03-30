@@ -28,7 +28,6 @@
         }
 
         header {
-            /* background: #222; */
             background: #111111;
             color: #F5F5DC;
             padding: 15px 0;
@@ -63,7 +62,6 @@
 
         .hero {
             background: #ffd043;
-            color: F5F5DC;
             padding: 50px 20px;
             animation: fadeIn 1.5s ease-in-out;
         }
@@ -84,7 +82,6 @@
             border-radius: 50%;
             margin-bottom: 15px;
             animation: scaleUp 1s ease-in-out;
-            /* border: 5px solid #ffffff; */
         }
 
         @keyframes scaleUp {
@@ -98,7 +95,8 @@
         }
 
         .social-media,
-        .contact {
+        .contact,
+        .projects {
             margin: 50px 0;
             display: flex;
             flex-direction: column;
@@ -143,8 +141,39 @@
             transform: scale(1.1);
         }
 
+        .project-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            width: 80%;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            margin-bottom: 10px;
+        }
+
+        .project-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+            background: #ffd043;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
         footer {
-            /* background: #222; */
             background: #111111;
             color: white;
             padding: 15px 0;
@@ -173,6 +202,7 @@
                 opacity: 0;
             }
         }
+
     </style>
 </head>
 
@@ -181,6 +211,7 @@
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#social-media">Social Media</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -190,8 +221,31 @@
         <img src="p2.jpg" alt="Your Profile Picture">
         <h1>Raj Singh</h1>
         <p><span id="typing-text"></span></p>
-        <!-- <p>DSA Enthusiast | 🚀 Aspiring Software Developer</p> -->
     </section>
+    
+    <section class="projects container" id="projects">
+        <h2>Projects</h2>
+        <div class="project-card">
+            <h3>Project 1: 
+                🎵 𝐒𝐩𝐨𝐭𝐢𝐟𝐲 𝐂𝐥𝐨𝐧𝐞 - Frontend Project 🎧</h3>
+            <p>This is a fully responsive 𝐒𝐩𝐨𝐭𝐢𝐟𝐲 𝐂𝐥𝐨𝐧𝐞 built using modern web technologies to replicate the core design of the Spotify web application</p>
+            <p><strong>Tech Stack:</strong> HTML, CSS</p>
+            <div class="project-links">
+                <a href="https://github.com/therajsingh/Spotify-Clone" target="_blank">GitHub</a>
+                <a href="https://therajsingh.github.io/Spotify-Clone/" target="_blank">Live Demo</a>
+            </div>
+        </div>
+        <div class="project-card">
+            <h3>Project 2: Portfolio Website</h3>
+            <p>A personal portfolio showcasing projects, skills, and social media links.</p>
+            <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript</p>
+            <div class="project-links">
+                <a href="https://github.com/singhpiyush55/rajsingh-portfolio" class="project-button" target="_blank">GitHub</a>
+                <a href="https://rajprofile.logictrail.space/" class="project-button" target="_blank">Live Demo</a>
+            </div>
+        </div>
+    </section>
+
     <section class="social-media container" id="social-media">
         <h2>Connect with Me</h2>
         <div>
@@ -200,20 +254,20 @@
             <a href="https://github.com/therajsingh" target="_blank">GitHub</a>
         </div>
     </section>
+
     <section class="contact container" id="contact">
         <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:rajsingh.bhumca24@gmail.com">rajsingh.bhumca24@gmail.com</a>
-        </p>
-
+        <p>Email: <a href="mailto:rajsingh.bhumca24@gmail.com">rajsingh.bhumca24@gmail.com</a></p>
     </section>
+
     <footer>
         <p>&copy; 2025 Logictrail. All Rights Reserved.</p>
     </footer>
+
     <script>
         const phrases = [
             "A DSA Enthusiast.",
             "A Problem Solver.",
-            // "a Tech Learner.",
             "🚀 Aspiring Software Engineer."
         ];
 
@@ -229,7 +283,7 @@
                 typingText.innerHTML = currentPhrase.substring(0, index + 1);
                 index++;
                 if (index === currentPhrase.length) {
-                    setTimeout(() => { isDeleting = true; typeEffect(); }, 1500); // Pause before erasing
+                    setTimeout(() => { isDeleting = true; typeEffect(); }, 1500);
                     return;
                 }
             } else {
@@ -237,18 +291,17 @@
                 index--;
                 if (index === 0) {
                     isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length; // Move to next phrase
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
                 }
             }
 
-            setTimeout(typeEffect, isDeleting ? 50 : 100); // Adjust typing/erasing speed
+            setTimeout(typeEffect, isDeleting ? 50 : 100);
         }
 
         window.onload = function () {
             typeEffect();
         };
     </script>
-
 </body>
 
 </html>
